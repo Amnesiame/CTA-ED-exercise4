@@ -1,7 +1,7 @@
 # Exercise 4: Scaling techniques
 
 # Preparation
-```{r, echo=T, message=F ,warning=F}
+```{r, echo=T, message=F ,warning=F, results='hide'}
 # Packages
 library(kableExtra)
 library(dplyr)
