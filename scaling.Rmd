@@ -1,7 +1,7 @@
 # Exercise 4: Scaling techniques
 
 # Preparation
-```{r, echo=F}
+```{r, echo=T, message=F ,warning=F}
 library(kableExtra)
 library(dplyr)
 library(quanteda)
