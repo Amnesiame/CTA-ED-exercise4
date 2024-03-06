@@ -2,19 +2,23 @@
 
 # Preparation
 ```{r, echo=T, message=F ,warning=F}
+# Packages
 library(kableExtra)
 library(dplyr)
 library(quanteda)
 library(quanteda.textmodels) # Textmodel_wordfish
 library(quanteda.textplots) # Textplot_scale1d
 library(ggplot2) # Bar plot
+
+# Import Data
+kaneko <- readRDS(gzcon(url("https://github.com/cjbarrie/CTA-ED/blob/main/data/wordscaling/study1_kaneko.rds?raw=true")))
+
+# Check
+glimpse(kaneko)
 ```
 
 # Q1 Estimate a wordfish model for the @kaneko_estimating_2021 data
 ```{r}
-# Import Data
-kaneko  <- readRDS(gzcon(url("https://github.com/cjbarrie/CTA-ED/blob/main/data/wordscaling/study1_kaneko.rds?raw=true")))
-
 # Group data by variable "Newspaper".
 kaneko <- dfm_group(kaneko, groups = Newspaper)
 
@@ -64,7 +68,7 @@ feat_betas %>%
   arrange(desc(betas)) %>%
   slice_max(betas, n = 10) %>%
   ggplot(aes(x = reorder(features, betas), y = betas)) + 
-    geom_col(fill = "blue") +
+    geom_col(fill = "blue", alpha=0.5) +
     labs(title = "Top 10 Features by Beta Values", x = "Features", y = "Beta Values") +
     theme_minimal() +
     coord_flip()
